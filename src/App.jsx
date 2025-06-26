@@ -276,21 +276,22 @@ function App() {
                   <Phone className="w-6 h-6 text-primary" />
                   <div>
                     <p className="font-semibold">Telefon</p>
-                    <p className="text-muted-foreground">+49 (0) 123 456 789</p>
+                    <p className="text-muted-foreground">+49 (0) 176 29181838</p>
+                    <p className="text-muted-foreground">+49 (0) 155 10787433</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
                   <Mail className="w-6 h-6 text-primary" />
                   <div>
                     <p className="font-semibold">E-Mail</p>
-                    <p className="text-muted-foreground">info@simonas-reinigungsservice.de</p>
+                    <p className="text-muted-foreground">simonareinigung@gmail.com</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
                   <MapPin className="w-6 h-6 text-primary" />
                   <div>
                     <p className="font-semibold">Servicegebiet</p>
-                    <p className="text-muted-foreground">Deutschland und Umgebung</p>
+                    <p className="text-muted-foreground">Sigmaringen und Umgebung</p>
                   </div>
                 </div>
               </div>
@@ -349,9 +350,10 @@ function App() {
             <div>
               <h5 className="font-bold mb-4">Kontakt</h5>
               <div className="space-y-2 text-sm opacity-90">
-                <p>+49 (0) 123 456 789</p>
-                <p>info@simonas-reinigungsservice.de</p>
-                <p>Deutschland und Umgebung</p>
+                <p>+49 (0) 176 29181838</p>
+                <p>+49 (0) 155 10787433</p>
+                <p>simonareinigung@gmail.com</p>
+                <p>Sigmaringen und Umgebung</p>
               </div>
             </div>
           </div>
