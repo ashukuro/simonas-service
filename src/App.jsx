@@ -55,6 +55,13 @@ function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   useEffect(() => {
     window.addEventListener('scroll', checkScrollTop);
     return () => window.removeEventListener('scroll', checkScrollTop);
@@ -117,19 +124,19 @@ function App() {
       <header className="bg-white shadow-sm border-b">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <img src={logo} alt="Simona's Reinigungsservice Logo" className="h-12 w-12" />
+            <img src={logo} alt="Simona's Reinigungsservice Logo" className="h-16 w-16" />
             <div>
               <h1 className="text-xl font-bold text-primary">Simona's</h1>
               <p className="text-sm text-muted-foreground">Reinigungsservice</p>
             </div>
           </div>
-          <nav className="hidden md:flex space-x-6">
+          <nav className="md:flex space-x-6">
             <a href="#services" className="text-foreground hover:text-primary transition-colors">Leistungen</a>
             <a href="#about" className="text-foreground hover:text-primary transition-colors">Über uns</a>
             <a href="#testimonials" className="text-foreground hover:text-primary transition-colors">Bewertungen</a>
             <a href="#contact" className="text-foreground hover:text-primary transition-colors">Kontakt</a>
           </nav>
-          <Button className="bg-accent hover:bg-accent/90 text-accent-foreground">
+          <Button onClick={scrollToContact} className="bg-accent hover:bg-accent/90 text-accent-foreground">
             Kostenlos anfragen
           </Button>
         </div>
@@ -146,12 +153,9 @@ function App() {
               Vertrauen Sie auf unsere Erfahrung und Qualität. Wir bieten umfassende Reinigungsdienstleistungen
               für private und gewerbliche Kunden.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-primary hover:bg-primary/90">
-                Jetzt Termin vereinbaren
-              </Button>
-              <Button size="lg" variant="outline">
-                Kostenvoranschlag erhalten
+            <div className="flex flex-row gap-4 justify-center">
+              <Button size="lg" className="bg-primary hover:bg-primary/90" onClick={scrollToContact}>
+                Jetzt Kontakt aufnehmen
               </Button>
             </div>
             <div className="mt-12 flex flex-wrap justify-center gap-8 text-sm text-muted-foreground">
@@ -358,7 +362,7 @@ function App() {
                   <Input placeholder="E-Mail-Adresse" type="email" />
                   <Input placeholder="Telefonnummer" type="tel" />
                   <Textarea placeholder="Beschreiben Sie Ihre Anfrage..." rows={4} />
-                  <Button className="w-full bg-primary hover:bg-primary/90">
+                  <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
                     Anfrage senden
                   </Button>
                 </CardContent>
@@ -374,7 +378,7 @@ function App() {
           <div className="grid md:grid-cols-3 gap-8">
             <div>
               <div className="flex items-center space-x-3 mb-4">
-                <img src={logo} alt="Simona's Reinigungsservice Logo" className="h-10 w-10 brightness-0 invert" />
+                <img src={logo} alt="Simona's Reinigungsservice Logo" className="h-16 w-16" />
                 <div>
                   <h5 className="font-bold">Simona's</h5>
                   <p className="text-sm opacity-90">Reinigungsservice</p>
@@ -407,6 +411,7 @@ function App() {
           </div>
           <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center text-sm opacity-90">
             <p>&copy; 2025 Simona's Reinigungsservice. Alle Rechte vorbehalten.</p>
+            <p className="mt-2">Design by <a href="https://www.web-matrix.me" target="_blank" rel="noopener noreferrer" className="underline">WebMatrix</a></p>
           </div>
         </div>
       </footer>
