@@ -380,7 +380,7 @@ function App() {
               <div className="flex items-center space-x-3 mb-4">
                 <img src={logo} alt="Simona's Reinigungsservice Logo" className="h-16 w-16" />
                 <div>
-                  <h5 className="font-bold">Simona's</h5>
+                  <h5 className="font-bold text-lg">Simona's</h5>
                   <p className="text-sm opacity-90">Reinigungsservice</p>
                 </div>
               </div>
@@ -390,28 +390,28 @@ function App() {
               </p>
             </div>
             <div>
-              <h5 className="font-bold mb-4">Leistungen</h5>
+              <h5 className="font-bold text-lg mb-4">Leistungen</h5>
               <ul className="space-y-2 text-sm opacity-90">
-                <li>Allgemeine Reinigung</li>
-                <li>Fensterreinigung</li>
-                <li>Bauendreinigung</li>
-                <li>Entrümpelung</li>
-                <li>Gartenarbeiten</li>
+                <li className="flex items-center gap-2"><Sparkles className="w-4 h-4" />Allgemeine Reinigung</li>
+                <li className="flex items-center gap-2"><Square className="w-4 h-4" />Fensterreinigung</li>
+                <li className="flex items-center gap-2"><HardHat className="w-4 h-4" />Bauendreinigung</li>
+                <li className="flex items-center gap-2"><Trash2 className="w-4 h-4" />Entrümpelung</li>
+                <li className="flex items-center gap-2"><TreePine className="w-4 h-4" />Gartenarbeiten</li>
               </ul>
             </div>
             <div>
-              <h5 className="font-bold mb-4">Kontakt</h5>
+              <h5 className="font-bold text-lg mb-4">Kontakt</h5>
               <div className="space-y-2 text-sm opacity-90">
-                <p>+49 (0) 176 29181838</p>
-                <p>+49 (0) 155 10787433</p>
-                <p>simonareinigung@gmail.com</p>
-                <p>Sigmaringen und Umgebung</p>
+                <p className="flex items-center gap-2"><Phone className="w-4 h-4" />+49 (0) 176 29181838</p>
+                <p className="flex items-center gap-2"><Phone className="w-4 h-4" />+49 (0) 155 10787433</p>
+                <p className="flex items-center gap-2"><Mail className="w-4 h-4" />simonareinigung@gmail.com</p>
+                <p className="flex items-center gap-2"><MapPin className="w-4 h-4" />Sigmaringen und Umgebung</p>
               </div>
             </div>
           </div>
-          <div className="border-t border-primary-foreground/20 mt-8 pt-8 text-center text-sm opacity-90">
+          <div className="border-t border-primary-foreground/20 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center text-sm opacity-90">
             <p>&copy; 2025 Simona's Reinigungsservice. Alle Rechte vorbehalten.</p>
-            <p className="mt-2">Design by <a href="https://www.web-matrix.me" target="_blank" rel="noopener noreferrer" className="underline">WebMatrix</a></p>
+            <p className="mt-4 md:mt-0">Design by <a href="https://www.web-matrix.me" target="_blank" rel="noopener noreferrer" className="underline hover:text-accent transition-colors">WebMatrix</a></p>
           </div>
         </div>
       </footer>
