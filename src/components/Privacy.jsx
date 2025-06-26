@@ -1,16 +1,42 @@
 import React from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card.jsx';
 
 const Privacy = () => {
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-4">Datenschutzerklärung</h1>
-      <p className="mb-4">Wir legen großen Wert auf den Schutz Ihrer Daten. Nachfolgend informieren wir Sie über die Erhebung und Verwendung persönlicher Daten bei der Nutzung unserer Webseite.</p>
-      <h2 className="text-2xl font-bold mt-6 mb-4">Erhebung und Verarbeitung von Daten</h2>
-      <p className="mb-4">Jeder Zugriff auf unsere Webseite und jeder Abruf einer auf der Webseite hinterlegten Datei werden protokolliert. Die Speicherung dient internen systembezogenen und statistischen Zwecken. Protokolliert werden: Name der abgerufenen Datei, Datum und Uhrzeit des Abrufs, übertragene Datenmenge, Meldung über erfolgreichen Abruf, Webbrowser und anfragende Domain.</p>
-      <h2 className="text-2xl font-bold mt-6 mb-4">Kontaktformular</h2>
-      <p className="mb-4">Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
-      <h2 className="text-2xl font-bold mt-6 mb-4">Auskunftsrecht</h2>
-      <p>Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung sowie ein Recht auf Berichtigung, Sperrung oder Löschung dieser Daten.</p>
+    <div className="bg-muted/30">
+      <div className="container mx-auto px-4 py-12 md:py-20">
+        <Card className="max-w-4xl mx-auto">
+          <CardHeader>
+            <CardTitle className="text-3xl md:text-4xl font-bold text-primary">Datenschutzerklärung</CardTitle>
+          </CardHeader>
+          <CardContent className="text-muted-foreground space-y-6">
+            <p>Wir legen großen Wert auf den Schutz Ihrer Daten und die Wahrung Ihrer Privatsphäre. Nachfolgend informieren wir Sie deshalb über die Erhebung und Verwendung persönlicher Daten bei der Nutzung unserer Webseite.</p>
+
+            <div className="space-y-2">
+              <h2 className="text-2xl font-semibold text-foreground">Verantwortliche Stelle</h2>
+              <p>Verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
+              <p>Simona's Reinigungsservice</p>
+              <p>Musterstraße 123</p>
+              <p>12345 Musterstadt</p>
+              <p>E-Mail: simonareinigung@gmail.com</p>
+            </div>
+
+            <div className="space-y-2">
+              <h2 className="text-2xl font-semibold text-foreground">Datenerfassung auf unserer Website</h2>
+              <h3 className="text-xl font-semibold text-foreground mt-4">Server-Log-Dateien</h3>
+              <p>Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten Server-Log-Dateien, die Ihr Browser automatisch an uns übermittelt. Dies sind Browsertyp und Browserversion, verwendetes Betriebssystem, Referrer URL, Hostname des zugreifenden Rechners und Uhrzeit der Serveranfrage. Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen.</p>
+              
+              <h3 className="text-xl font-semibold text-foreground mt-4">Kontaktformular</h3>
+              <p>Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
+            </div>
+
+            <div className="space-y-2">
+              <h2 className="text-2xl font-semibold text-foreground">Ihre Rechte als Betroffener</h2>
+              <p>Sie haben im Rahmen der geltenden gesetzlichen Bestimmungen jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung und ggf. ein Recht auf Berichtigung, Sperrung oder Löschung dieser Daten.</p>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 };

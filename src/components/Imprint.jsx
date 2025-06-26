@@ -1,17 +1,47 @@
 import React from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card.jsx';
 
 const Imprint = () => {
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-4">Impressum</h1>
-      <p className="mb-2">Angaben gemäß § 5 TMG</p>
-      <p className="mb-2">Simona's Reinigungsservice</p>
-      <p className="mb-2">Inhaberin: Simona</p>
-      <p className="mb-2">Adresse: Musterstraße 1, 12345 Musterstadt</p>
-      <p className="mb-2">Telefon: +49 (0) 176 29181838</p>
-      <p className="mb-2">E-Mail: simonareinigung@gmail.com</p>
-      <h2 className="text-2xl font-bold mt-6 mb-4">Haftungsausschluss</h2>
-      <p>Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
+    <div className="bg-muted/30">
+      <div className="container mx-auto px-4 py-12 md:py-20">
+        <Card className="max-w-4xl mx-auto">
+          <CardHeader>
+            <CardTitle className="text-3xl md:text-4xl font-bold text-primary">Impressum</CardTitle>
+          </CardHeader>
+          <CardContent className="text-muted-foreground space-y-6">
+            <div className="space-y-2">
+              <h2 className="text-2xl font-semibold text-foreground">Angaben gemäß § 5 TMG</h2>
+              <p>Simona's Reinigungsservice</p>
+              <p>Inhaberin: Simona [Nachname]</p>
+              <p>Musterstraße 123</p>
+              <p>12345 Musterstadt</p>
+            </div>
+
+            <div className="space-y-2">
+              <h2 className="text-2xl font-semibold text-foreground">Kontakt</h2>
+              <p>Telefon: +49 (0) 176 29181838</p>
+              <p>Telefon: +49 (0) 155 10787433</p>
+              <p>E-Mail: simonareinigung@gmail.com</p>
+            </div>
+
+            <div className="space-y-2">
+              <h2 className="text-2xl font-semibold text-foreground">Umsatzsteuer-ID</h2>
+              <p>Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:</p>
+              <p>DE123456789</p>
+            </div>
+
+            <div className="space-y-2">
+              <h2 className="text-2xl font-semibold text-foreground">Haftungsausschluss (Disclaimer)</h2>
+              <h3 className="text-xl font-semibold text-foreground mt-4">Haftung für Inhalte</h3>
+              <p>Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+              
+              <h3 className="text-xl font-semibold text-foreground mt-4">Haftung für Links</h3>
+              <p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 };

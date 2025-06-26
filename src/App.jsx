@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link, useLocation, useNavigate } from 'react-router-dom';
 import { useOnScreen } from './hooks/useOnScreen';
 import Imprint from './components/Imprint';
 import Privacy from './components/Privacy';
@@ -14,7 +14,7 @@ import {
   MapPin,
   Star,
   Sparkles,
-  Home,
+  Home as HomeIcon,
   Building,
   Trash2,
   TreePine,
@@ -40,148 +40,14 @@ const AnimatedSection = ({ children, id }) => {
   );
 };
 
-// Layout Component: Includes Header, Footer, and scroll functionality
-const Layout = ({ children }) => {
-  const [showScroll, setShowScroll] = useState(false);
-  const location = useLocation();
-
-  const checkScrollTop = () => {
-    if (!showScroll && window.pageYOffset > 400) {
-      setShowScroll(true);
-    } else if (showScroll && window.pageYOffset <= 400) {
-      setShowScroll(false);
-    }
-  };
-
-  const scrollTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  // Handles scrolling to sections on the homepage
-  const handleScrollTo = (id) => {
-    // If we are not on the homepage, navigate first, then scroll.
-    if (location.pathname !== '/') {
-      // This is a simplified navigation. For a more robust solution,
-      // you might need to pass a message or use state management.
-      window.location.href = `/#${id}`;
-    } else {
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  };
-  
-  // Effect for handling hash links when the page loads
-  useEffect(() => {
-    if (location.hash) {
-      const id = location.hash.replace('#', '');
-      // Timeout to allow the page to render before scrolling
-      setTimeout(() => {
-        const element = document.getElementById(id);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
-    }
-  }, [location]);
-
-
-  useEffect(() => {
-    window.addEventListener('scroll', checkScrollTop);
-    return () => window.removeEventListener('scroll', checkScrollTop);
-  }, [showScroll]);
-
-  return (
-    <div className="min-h-screen bg-background flex flex-col">
-      {/* Header */}
-      <header className="bg-white shadow-sm border-b sticky top-0 z-40">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <Link to="/">
-              <img src={logo} alt="Simona's Reinigungsservice Logo" className="h-16 w-16" />
-            </Link>
-            <div>
-              <h1 className="text-xl font-bold text-primary">Simona's</h1>
-              <p className="text-sm text-muted-foreground">Reinigungsservice</p>
-            </div>
-          </div>
-          <nav className="hidden md:flex space-x-6">
-            <a href="/#services" onClick={(e) => { e.preventDefault(); handleScrollTo('services'); }} className="text-foreground hover:text-primary transition-colors">Leistungen</a>
-            <a href="/#about" onClick={(e) => { e.preventDefault(); handleScrollTo('about'); }} className="text-foreground hover:text-primary transition-colors">Über uns</a>
-            <a href="/#testimonials" onClick={(e) => { e.preventDefault(); handleScrollTo('testimonials'); }} className="text-foreground hover:text-primary transition-colors">Bewertungen</a>
-            <a href="/#contact" onClick={(e) => { e.preventDefault(); handleScrollTo('contact'); }} className="text-foreground hover:text-primary transition-colors">Kontakt</a>
-          </nav>
-          <Button onClick={() => handleScrollTo('contact')} className="bg-accent hover:bg-accent/90 text-accent-foreground">
-            Kostenlos anfragen
-          </Button>
-        </div>
-      </header>
-
-      <main className="flex-grow">{children}</main>
-
-      {/* Footer */}
-      <footer className="bg-primary text-primary-foreground py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8">
-            <div>
-              <div className="flex items-center space-x-3 mb-4">
-                <img src={logo} alt="Simona's Reinigungsservice Logo" className="h-16 w-16 brightness-0 invert" />
-                <div>
-                  <h5 className="font-bold text-lg">Simona's</h5>
-                  <p className="text-sm opacity-90">Reinigungsservice</p>
-                </div>
-              </div>
-              <p className="text-sm opacity-90">
-                Ihr zuverlässiger Partner für professionelle Gebäudereinigung und Gartenarbeiten.
-              </p>
-            </div>
-            <div>
-              <h5 className="font-bold text-lg mb-4">Leistungen</h5>
-              <ul className="space-y-2 text-sm opacity-90">
-                <li className="flex items-center gap-2"><Sparkles className="w-4 h-4" />Allgemeine Reinigung</li>
-                <li className="flex items-center gap-2"><Square className="w-4 h-4" />Fensterreinigung</li>
-                <li className="flex items-center gap-2"><HardHat className="w-4 h-4" />Bauendreinigung</li>
-                <li className="flex items-center gap-2"><Trash2 className="w-4 h-4" />Entrümpelung</li>
-                <li className="flex items-center gap-2"><TreePine className="w-4 h-4" />Gartenarbeiten</li>
-              </ul>
-            </div>
-            <div>
-              <h5 className="font-bold text-lg mb-4">Kontakt</h5>
-              <div className="space-y-2 text-sm opacity-90">
-                <p className="flex items-center gap-2"><Phone className="w-4 h-4" />+49 (0) 176 29181838</p>
-                <p className="flex items-center gap-2"><Phone className="w-4 h-4" />+49 (0) 155 10787433</p>
-                <p className="flex items-center gap-2"><Mail className="w-4 h-4" />simonareinigung@gmail.com</p>
-                <p className="flex items-center gap-2"><MapPin className="w-4 h-4" />Sigmaringen und Umgebung</p>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-primary-foreground/20 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center text-sm opacity-90">
-            <p>&copy; 2025 Simona's Reinigungsservice. Alle Rechte vorbehalten.</p>
-            <p className="mt-4 md:mt-0">Design by <a href="https://www.web-matrix.me" target="_blank" rel="noopener noreferrer" className="underline hover:text-accent transition-colors">WebMatrix</a></p>
-            <div className="flex gap-4 mt-4 md:mt-0">
-              <Link to="/impressum" className="underline hover:text-accent transition-colors">Impressum</Link>
-              <Link to="/datenschutz" className="underline hover:text-accent transition-colors">Datenschutz</Link>
-            </div>
-          </div>
-        </div>
-      </footer>
-
-      <Button onClick={scrollTop} className={`scroll-to-top ${showScroll ? 'visible' : ''}`} variant="outline" size="icon">
-        <ArrowUp className="h-4 w-4" />
-      </Button>
-    </div>
-  );
-};
-
 // Home Page Content Component
-const HomePage = () => {
+const Home = () => {
   const services = [
     { icon: <Sparkles className="w-8 h-8 text-primary" />, title: "Allgemeine Reinigungsarbeiten", description: "Professionelle Reinigung für alle Bereiche Ihres Zuhauses oder Büros" },
     { icon: <Square className="w-8 h-8 text-primary" />, title: "Glas- und Fensterreinigung", description: "Kristallklare Fenster und Glasflächen für perfekte Durchsicht" },
     { icon: <HardHat className="w-8 h-8 text-primary" />, title: "Bauendreinigung", description: "Gründliche Reinigung nach Bau- oder Renovierungsarbeiten" },
     { icon: <Trash2 className="w-8 h-8 text-primary" />, title: "Entrümpelung", description: "Professionelle Entrümpelung von Wohnungen, Häusern und Büros" },
-    { icon: <HomePage className="w-8 h-8 text-primary" />, title: "Dachinnenreinigung", description: "Spezialisierte Reinigung von Dachböden und schwer zugänglichen Bereichen" },
+    { icon: <HomeIcon className="w-8 h-8 text-primary" />, title: "Dachinnenreinigung", description: "Spezialisierte Reinigung von Dachböden und schwer zugänglichen Bereichen" },
     { icon: <TreePine className="w-8 h-8 text-primary" />, title: "Gartenarbeiten aller Art", description: "Komplette Gartenpflege und -gestaltung für Ihr grünes Paradies" }
   ];
 
@@ -264,7 +130,7 @@ const HomePage = () => {
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <Badge variant="secondary" className="text-sm py-2 px-4"><Building className="w-4 h-4 mr-2" />Gewerblich</Badge>
-                  <Badge variant="secondary" className="text-sm py-2 px-4"><HomePage className="w-4 h-4 mr-2" />Privat</Badge>
+                  <Badge variant="secondary" className="text-sm py-2 px-4"><HomeIcon className="w-4 h-4 mr-2" />Privat</Badge>
                   <Badge variant="secondary" className="text-sm py-2 px-4"><CheckCircle className="w-4 h-4 mr-2" />Versichert</Badge>
                 </div>
               </div>
@@ -354,13 +220,144 @@ const HomePage = () => {
   );
 };
 
+// Layout Component: Includes Header, Footer, and scroll functionality
+const Layout = ({ children }) => {
+  const [showScroll, setShowScroll] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const checkScrollTop = () => {
+    if (!showScroll && window.pageYOffset > 400) {
+      setShowScroll(true);
+    } else if (showScroll && window.pageYOffset <= 400) {
+      setShowScroll(false);
+    }
+  };
+
+  const scrollTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Handles scrolling to sections on the homepage
+  const handleScrollTo = (id) => {
+    if (location.pathname !== '/') {
+      navigate(`/#${id}`);
+    } else {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+  
+  // Effect for handling hash links when the page loads
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  }, [location]);
+
+
+  useEffect(() => {
+    window.addEventListener('scroll', checkScrollTop);
+    return () => window.removeEventListener('scroll', checkScrollTop);
+  }, [showScroll]);
+
+  return (
+    <div className="min-h-screen bg-background flex flex-col">
+      {/* Header */}
+      <header className="bg-white shadow-sm border-b sticky top-0 z-40">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <div className="flex items-center space-x-3">
+            <Link to="/">
+              <img src={logo} alt="Simona's Reinigungsservice Logo" className="h-16 w-16" />
+            </Link>
+            <div>
+              <h1 className="text-xl font-bold text-primary">Simona's</h1>
+              <p className="text-sm text-muted-foreground">Reinigungsservice</p>
+            </div>
+          </div>
+          <nav className="md:flex space-x-6">
+            <a href="/#services" onClick={(e) => { e.preventDefault(); handleScrollTo('services'); }} className="text-foreground hover:text-primary transition-colors">Leistungen</a>
+            <a href="/#about" onClick={(e) => { e.preventDefault(); handleScrollTo('about'); }} className="text-foreground hover:text-primary transition-colors">Über uns</a>
+            <a href="/#testimonials" onClick={(e) => { e.preventDefault(); handleScrollTo('testimonials'); }} className="text-foreground hover:text-primary transition-colors">Bewertungen</a>
+            <a href="/#contact" onClick={(e) => { e.preventDefault(); handleScrollTo('contact'); }} className="text-foreground hover:text-primary transition-colors">Kontakt</a>
+          </nav>
+          <Button onClick={() => handleScrollTo('contact')} className="bg-accent hover:bg-accent/90 text-accent-foreground">
+            Kostenlos anfragen
+          </Button>
+        </div>
+      </header>
+
+      <main className="flex-grow">{children}</main>
+
+      {/* Footer */}
+      <footer className="bg-primary text-primary-foreground py-12">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-3 gap-8">
+            <div>
+              <div className="flex items-center space-x-3 mb-4">
+                <img src={logo} alt="Simona's Reinigungsservice Logo" className="h-16 w-16" />
+                <div>
+                  <h5 className="font-bold text-lg">Simona's</h5>
+                  <p className="text-sm opacity-90">Reinigungsservice</p>
+                </div>
+              </div>
+              <p className="text-sm opacity-90">
+                Ihr zuverlässiger Partner für professionelle Gebäudereinigung und Gartenarbeiten.
+              </p>
+            </div>
+            <div>
+              <h5 className="font-bold text-lg mb-4">Leistungen</h5>
+              <ul className="space-y-2 text-sm opacity-90">
+                <li className="flex items-center gap-2"><Sparkles className="w-4 h-4" />Allgemeine Reinigung</li>
+                <li className="flex items-center gap-2"><Square className="w-4 h-4" />Fensterreinigung</li>
+                <li className="flex items-center gap-2"><HardHat className="w-4 h-4" />Bauendreinigung</li>
+                <li className="flex items-center gap-2"><Trash2 className="w-4 h-4" />Entrümpelung</li>
+                <li className="flex items-center gap-2"><TreePine className="w-4 h-4" />Gartenarbeiten</li>
+              </ul>
+            </div>
+            <div>
+              <h5 className="font-bold text-lg mb-4">Kontakt</h5>
+              <div className="space-y-2 text-sm opacity-90">
+                <p className="flex items-center gap-2"><Phone className="w-4 h-4" />+49 (0) 176 29181838</p>
+                <p className="flex items-center gap-2"><Phone className="w-4 h-4" />+49 (0) 155 10787433</p>
+                <p className="flex items-center gap-2"><Mail className="w-4 h-4" />simonareinigung@gmail.com</p>
+                <p className="flex items-center gap-2"><MapPin className="w-4 h-4" />Sigmaringen und Umgebung</p>
+              </div>
+            </div>
+          </div>
+          <div className="border-t border-primary-foreground/20 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center text-sm opacity-90">
+            <p>&copy; 2025 Simona's Reinigungsservice. Alle Rechte vorbehalten.</p>
+            <p className="mt-4 md:mt-0">Design by <a href="https://www.web-matrix.me" target="_blank" rel="noopener noreferrer" className="underline hover:text-accent transition-colors">WebMatrix</a></p>
+            <div className="flex gap-4 mt-4 md:mt-0">
+              <Link to="/impressum" className="underline hover:text-accent transition-colors">Impressum</Link>
+              <Link to="/datenschutz" className="underline hover:text-accent transition-colors">Datenschutz</Link>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <Button onClick={scrollTop} className={`scroll-to-top ${showScroll ? 'visible' : ''}`} variant="outline" size="icon">
+        <ArrowUp className="h-4 w-4" />
+      </Button>
+    </div>
+  );
+};
+
 // Main App Component with Router
 function App() {
   return (
     <Router>
       <Layout>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<Home />} />
           <Route path="/impressum" element={<Imprint />} />
           <Route path="/datenschutz" element={<Privacy />} />
         </Routes>
