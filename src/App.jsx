@@ -22,7 +22,8 @@ import {
   Square,
   HardHat,
   CheckCircle,
-  ArrowUp
+  ArrowUp,
+  Clock
 } from 'lucide-react';
 import logo from './assets/simonas_reinigungsservice_logo.png';
 import './App.css';
@@ -197,6 +198,7 @@ const Home = () => {
                 <div className="space-y-6">
                   <div className="flex items-center gap-4"><Phone className="w-6 h-6 text-primary" /><div><p className="font-semibold">Telefon</p><p className="text-muted-foreground">+49 (0) 176 29181838</p><p className="text-muted-foreground">+49 (0) 155 10787433</p></div></div>
                   <div className="flex items-center gap-4"><Mail className="w-6 h-6 text-primary" /><div><p className="font-semibold">E-Mail</p><p className="text-muted-foreground">simonareinigung@gmail.com</p></div></div>
+                  <div className="flex items-center gap-4"><Clock className="w-6 h-6 text-primary" /><div><p className="font-semibold">Öffnungszeiten</p><p className="text-muted-foreground">Montag - Samstag: 06:00 - 19:00 Uhr</p></div></div>
                   <div className="flex items-center gap-4"><MapPin className="w-6 h-6 text-primary" /><div><p className="font-semibold">Servicegebiet</p><p className="text-muted-foreground">Sigmaringen und Umgebung</p></div></div>
                 </div>
               </div>
@@ -302,7 +304,7 @@ const Layout = ({ children }) => {
       {/* Footer */}
       <footer className="bg-primary text-primary-foreground py-12">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center space-x-3 mb-4">
                 <img src={logo} alt="Simona's Reinigungsservice Logo" className="h-16 w-16" />
@@ -324,6 +326,13 @@ const Layout = ({ children }) => {
                 <li className="flex items-center gap-2"><Trash2 className="w-4 h-4" />Entrümpelung</li>
                 <li className="flex items-center gap-2"><TreePine className="w-4 h-4" />Gartenarbeiten</li>
               </ul>
+            </div>
+            <div>
+              <h5 className="font-bold text-lg mb-4">Öffnungszeiten</h5>
+              <div className="space-y-2 text-sm opacity-90">
+                <p className="flex items-center gap-2"><Clock className="w-4 h-4" />Montag - Samstag</p>
+                <p className="ml-6">06:00 - 19:00 Uhr</p>
+              </div>
             </div>
             <div>
               <h5 className="font-bold text-lg mb-4">Kontakt</h5>
