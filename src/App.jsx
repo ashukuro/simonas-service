@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import CookieBanner from './components/CookieBanner';
 import { BrowserRouter as Router, Route, Routes, Link, useLocation, useNavigate } from 'react-router-dom';
 import { useOnScreen } from './hooks/useOnScreen';
@@ -66,8 +67,57 @@ const Home = () => {
     }
   };
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Simona's Reinigungsservice",
+    "image": "https://www.simonas-reinigungsservice.de/src/assets/simonas_reinigungsservice_logo.png",
+    "url": "https://www.simonas-reinigungsservice.de",
+    "telephone": "+4917629181838",
+    "priceRange": "$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "",
+      "addressLocality": "Sigmaringen",
+      "postalCode": "",
+      "addressCountry": "DE"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 48.0886,
+      "longitude": 9.2175
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+      ],
+      "opens": "06:00",
+      "closes": "19:00"
+    }
+  };
+
   return (
     <>
+      <Helmet>
+        <title>Simona's Reinigungsservice - Professionelle Gebäudereinigung in Sigmaringen</title>
+        <meta name="description" content="Simona's Reinigungsservice bietet professionelle Reinigungsdienstleistungen in Sigmaringen und Umgebung. Kontaktieren Sie uns für ein kostenloses Angebot." />
+        <link rel="canonical" href="https://www.simonas-reinigungsservice.de" />
+        <meta property="og:title" content="Simona's Reinigungsservice - Professionelle Gebäudereinigung in Sigmaringen" />
+        <meta property="og:description" content="Simona's Reinigungsservice bietet professionelle Reinigungsdienstleistungen in Sigmaringen und Umgebung. Kontaktieren Sie uns für ein kostenloses Angebot." />
+        <meta property="og:url" content="https://www.simonas-reinigungsservice.de" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://www.simonas-reinigungsservice.de/src/assets/simonas_reinigungsservice_logo.png" />
+        <meta property="og:site_name" content="Simona's Reinigungsservice" />
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
+      </Helmet>
       {/* Hero Section */}
       <AnimatedSection id="hero">
         <div className="bg-gradient-to-br from-primary/5 to-accent/5 py-20">
