@@ -178,7 +178,7 @@ const AnimatedSection = ({ children, id }) => {
         <title>Simona's Reinigungsservice - Professionelle Gebäudereinigung in Sigmaringen</title>
         <meta name="description" content="Simona's Reinigungsservice bietet professionelle Reinigungsdienstleistungen in Sigmaringen und Umgebung. Kontaktieren Sie uns für ein kostenloses Angebot." />
         <link rel="canonical" href="https://simona-reinigungsservice.de" />
-        <meta property="og:title" content="Simona's Reinigungsservice - Professionelle Gebäudereinigung in Sigmaringen" />
+        <meta property="og:title" content="Simona's Reinigungsservice - Professionelle Reinigungsservice in Sigmaringen" />
         <meta property="og:description" content="Simona's Reinigungsservice bietet professionelle Reinigungsdienstleistungen in Sigmaringen und Umgebung. Kontaktieren Sie uns für ein kostenloses Angebot." />
         <meta property="og:url" content="https://simona-reinigungsservice.de" />
         <meta property="og:type" content="website" />
