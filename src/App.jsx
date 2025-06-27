@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import { Helmet } from 'react-helmet-async';
 import CookieBanner from './components/CookieBanner';
 import { BrowserRouter as Router, Route, Routes, Link, useLocation, useNavigate } from 'react-router-dom';
@@ -44,7 +45,24 @@ const AnimatedSection = ({ children, id }) => {
 };
 
 // Home Page Content Component
-const Home = () => {
+  const Home = () => {
+  const form = useRef();
+  const [formStatus, setFormStatus] = useState(null); // 'success', 'error', or null
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_rosfkhc', 'template_v5znds6', form.current, '-ggIPIrLQuz_B_h57')
+      .then((result) => {
+          console.log(result.text);
+          setFormStatus('success');
+          form.current.reset(); // Clear form fields
+      }, (error) => {
+          console.log(error.text);
+          setFormStatus('error');
+      });
+  };
+
   const services = [
     { icon: <Sparkles className="w-8 h-8 text-primary" />, title: "Allgemeine Reinigungsarbeiten", description: "Professionelle Reinigung für alle Bereiche Ihres Zuhauses oder Büros" },
     { icon: <Square className="w-8 h-8 text-primary" />, title: "Glas- und Fensterreinigung", description: "Kristallklare Fenster und Glasflächen für perfekte Durchsicht" },
@@ -252,17 +270,21 @@ const Home = () => {
                   <div className="flex items-center gap-4"><MapPin className="w-6 h-6 text-primary" /><div><p className="font-semibold">Servicegebiet</p><p className="text-muted-foreground">Sigmaringen und Umgebung</p></div></div>
                 </div>
               </div>
-              <Card>
-                <CardHeader>
-                  <CardTitle>Kostenvoranschlag anfordern</CardTitle>
-                  <CardDescription>Füllen Sie das Formular aus und wir melden uns schnellstmöglich bei Ihnen.</CardDescription>
+              <Card className="bg-white shadow-xl rounded-lg p-6">
+                <CardHeader className="text-center mb-6">
+                  <CardTitle className="text-3xl font-bold text-primary">Kostenvoranschlag anfordern</CardTitle>
+                  <CardDescription className="text-muted-foreground">Füllen Sie das Formular aus und wir melden uns schnellstmöglich bei Ihnen.</CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4"><Input placeholder="Vorname" /><Input placeholder="Nachname" /></div>
-                  <Input placeholder="E-Mail-Adresse" type="email" />
-                  <Input placeholder="Telefonnummer" type="tel" />
-                  <Textarea placeholder="Beschreiben Sie Ihre Anfrage..." rows={4} />
-                  <Button type="submit" className="w-full bg-primary hover:bg-primary/90">Anfrage senden</Button>
+                <CardContent className="space-y-6">
+                  <form ref={form} onSubmit={sendEmail} className="space-y-4">
+                    <Input placeholder="Name" name="user_name" required className="border-gray-300 focus:border-primary focus:ring-primary" />
+                    <Input placeholder="E-Mail-Adresse" type="email" name="user_email" required className="border-gray-300 focus:border-primary focus:ring-primary" />
+                    <Input placeholder="Telefon" type="tel" name="user_phone" className="border-gray-300 focus:border-primary focus:ring-primary" />
+                    <Textarea placeholder="Nachricht" rows={5} name="message" required className="border-gray-300 focus:border-primary focus:ring-primary" />
+                    <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-lg py-3">Anfrage senden</Button>
+                  </form>
+                  {formStatus === 'success' && <p className="text-green-500 text-center mt-4">Ihre Nachricht wurde erfolgreich gesendet!</p>}
+                  {formStatus === 'error' && <p className="text-red-500 text-center mt-4">Fehler beim Senden Ihrer Nachricht. Bitte versuchen Sie es später erneut.</p>}
                 </CardContent>
               </Card>
             </div>
