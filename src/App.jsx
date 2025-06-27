@@ -26,8 +26,10 @@ import {
   CheckCircle,
   ArrowUp,
   Clock,
-  Loader2
+  Loader2,
+  Menu
 } from 'lucide-react';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet.jsx';
 import logo from './assets/simonas_reinigungsservice_logo.png';
 import './App.css';
 
@@ -357,8 +359,10 @@ const AnimatedSection = ({ children, id }) => {
 // Layout Component: Includes Header, Footer, and scroll functionality
 const Layout = ({ children }) => {
   const [showScroll, setShowScroll] = useState(false);
+  const [isSheetOpen, setIsSheetOpen] = useState(false); // New state for sheet
   const location = useLocation();
   const navigate = useNavigate();
+  const headerRef = useRef(null);
 
   const checkScrollTop = () => {
     if (!showScroll && window.pageYOffset > 400) {
@@ -379,9 +383,17 @@ const Layout = ({ children }) => {
     } else {
       const element = document.getElementById(id);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        const headerOffset = headerRef.current ? headerRef.current.offsetHeight : 0;
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
       }
     }
+    setIsSheetOpen(false); // Close sheet after navigation
   };
   
   // Effect for handling hash links when the page loads
@@ -391,7 +403,14 @@ const Layout = ({ children }) => {
       setTimeout(() => {
         const element = document.getElementById(id);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+          const headerOffset = headerRef.current ? headerRef.current.offsetHeight : 0;
+          const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = elementPosition - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
         }
       }, 100);
     }
@@ -406,7 +425,7 @@ const Layout = ({ children }) => {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b sticky top-0 z-40">
+      <header ref={headerRef} className="bg-white shadow-sm border-b sticky top-0 z-40">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <Link to="/">
@@ -417,14 +436,37 @@ const Layout = ({ children }) => {
               <p className="text-sm text-muted-foreground">Reinigungsservice</p>
             </div>
           </div>
-          <nav className="md:flex space-x-6">
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex space-x-6">
             <Link to="/" onClick={scrollTop} className="text-foreground hover:text-primary transition-colors">Start</Link>
             <a href="/#services" onClick={(e) => { e.preventDefault(); handleScrollTo('services'); }} className="text-foreground hover:text-primary transition-colors">Leistungen</a>
             <a href="/#about" onClick={(e) => { e.preventDefault(); handleScrollTo('about'); }} className="text-foreground hover:text-primary transition-colors">Über uns</a>
             <a href="/#testimonials" onClick={(e) => { e.preventDefault(); handleScrollTo('testimonials'); }} className="text-foreground hover:text-primary transition-colors">Bewertungen</a>
             <a href="/#contact" onClick={(e) => { e.preventDefault(); handleScrollTo('contact'); }} className="text-foreground hover:text-primary transition-colors">Kontakt</a>
           </nav>
-          <Button onClick={() => handleScrollTo('contact')} className="bg-accent hover:bg-accent/90 text-accent-foreground">
+          {/* Mobile Navigation */}
+          <div className="md:hidden">
+            <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
+              <SheetTrigger asChild>
+                <Button variant="outline" size="icon">
+                  <Menu className="h-6 w-6" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-full sm:w-[300px] flex flex-col">
+                <div className="flex flex-col space-y-4 pt-8 px-6 flex-grow">
+                  <Link to="/" onClick={() => { scrollTop(); setIsSheetOpen(false); }} className="text-foreground hover:text-primary transition-colors text-lg py-2 w-full text-center">Start</Link>
+                  <a href="/#services" onClick={(e) => { e.preventDefault(); handleScrollTo('services'); }} className="text-foreground hover:text-primary transition-colors text-lg py-2 w-full text-center">Leistungen</a>
+                  <a href="/#about" onClick={(e) => { e.preventDefault(); handleScrollTo('about'); }} className="text-foreground hover:text-primary transition-colors text-lg py-2 w-full text-center">Über uns</a>
+                  <a href="/#testimonials" onClick={(e) => { e.preventDefault(); handleScrollTo('testimonials'); }} className="text-foreground hover:text-primary transition-colors text-lg py-2 w-full text-center">Bewertungen</a>
+                  <a href="/#contact" onClick={(e) => { e.preventDefault(); handleScrollTo('contact'); }} className="text-foreground hover:text-primary transition-colors text-lg py-2 w-full text-center">Kontakt</a>
+                  <Button onClick={() => handleScrollTo('contact')} className="bg-accent hover:bg-accent/90 text-accent-foreground mt-4 w-full">
+                    Kostenlos anfragen
+                  </Button>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
+          <Button onClick={() => handleScrollTo('contact')} className="hidden md:flex bg-accent hover:bg-accent/90 text-accent-foreground">
             Kostenlos anfragen
           </Button>
         </div>
