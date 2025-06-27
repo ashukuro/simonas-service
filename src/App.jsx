@@ -285,6 +285,7 @@ const Layout = ({ children }) => {
             </div>
           </div>
           <nav className="md:flex space-x-6">
+            <Link to="/" onClick={scrollTop} className="text-foreground hover:text-primary transition-colors">Start</Link>
             <a href="/#services" onClick={(e) => { e.preventDefault(); handleScrollTo('services'); }} className="text-foreground hover:text-primary transition-colors">Leistungen</a>
             <a href="/#about" onClick={(e) => { e.preventDefault(); handleScrollTo('about'); }} className="text-foreground hover:text-primary transition-colors">Über uns</a>
             <a href="/#testimonials" onClick={(e) => { e.preventDefault(); handleScrollTo('testimonials'); }} className="text-foreground hover:text-primary transition-colors">Bewertungen</a>
