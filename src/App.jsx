@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import CookieBanner from './components/CookieBanner';
 import { BrowserRouter as Router, Route, Routes, Link, useLocation, useNavigate } from 'react-router-dom';
 import { useOnScreen } from './hooks/useOnScreen';
 import Imprint from './components/Imprint';
@@ -353,6 +354,20 @@ const Layout = ({ children }) => {
 
 // Main App Component with Router
 function App() {
+  const [showCookieBanner, setShowCookieBanner] = useState(true);
+
+  useEffect(() => {
+    const cookieAccepted = localStorage.getItem('cookieAccepted');
+    if (cookieAccepted) {
+      setShowCookieBanner(false);
+    }
+  }, []);
+
+  const handleCookieAccept = () => {
+    localStorage.setItem('cookieAccepted', 'true');
+    setShowCookieBanner(false);
+  };
+
   return (
     <Router>
       <Layout>
@@ -362,6 +377,7 @@ function App() {
           <Route path="/datenschutz" element={<Privacy />} />
         </Routes>
       </Layout>
+      {showCookieBanner && <CookieBanner onAccept={handleCookieAccept} />}
     </Router>
   );
 }
