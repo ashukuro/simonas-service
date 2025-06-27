@@ -19,7 +19,7 @@ jobs:
           node-version: '20' # Verwenden Sie eine stabile Node.js-Version
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
 
       - name: Build project
         run: npm run build
