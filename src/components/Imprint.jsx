@@ -34,7 +34,7 @@ const Imprint = () => {
                 <h2 className="text-2xl font-semibold text-foreground">Kontakt</h2>
                 <p>Telefon: +49 (0) 176 29181838</p>
                 <p>Telefon: +49 (0) 155 10787433</p>
-                <p>E-Mail: simonareinigung@gmail.com</p>
+                <p>E-Mail: info@simona-reinigungsservice.de</p>
               </div>
 
               <div className="space-y-2">

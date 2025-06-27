@@ -247,7 +247,7 @@ const Home = () => {
                 <h4 className="text-2xl font-bold text-foreground mb-6">Kontaktinformationen</h4>
                 <div className="space-y-6">
                   <div className="flex items-center gap-4"><Phone className="w-6 h-6 text-primary" /><div><p className="font-semibold">Telefon</p><p className="text-muted-foreground">+49 (0) 176 29181838</p><p className="text-muted-foreground">+49 (0) 155 10787433</p></div></div>
-                  <div className="flex items-center gap-4"><Mail className="w-6 h-6 text-primary" /><div><p className="font-semibold">E-Mail</p><p className="text-muted-foreground">simonareinigung@gmail.com</p></div></div>
+                  <div className="flex items-center gap-4"><Mail className="w-6 h-6 text-primary" /><div><p className="font-semibold">E-Mail</p><p className="text-muted-foreground">info@simona-reinigungsservice.de</p></div></div>
                   <div className="flex items-center gap-4"><Clock className="w-6 h-6 text-primary" /><div><p className="font-semibold">Öffnungszeiten</p><p className="text-muted-foreground">Montag - Samstag: 06:00 - 19:00 Uhr</p></div></div>
                   <div className="flex items-center gap-4"><MapPin className="w-6 h-6 text-primary" /><div><p className="font-semibold">Servicegebiet</p><p className="text-muted-foreground">Sigmaringen und Umgebung</p></div></div>
                 </div>
@@ -389,7 +389,7 @@ const Layout = ({ children }) => {
               <div className="space-y-2 text-sm opacity-90">
                 <p className="flex items-center gap-2"><Phone className="w-4 h-4" />+49 (0) 176 29181838</p>
                 <p className="flex items-center gap-2"><Phone className="w-4 h-4" />+49 (0) 155 10787433</p>
-                <p className="flex items-center gap-2"><Mail className="w-4 h-4" />simonareinigung@gmail.com</p>
+                <p className="flex items-center gap-2"><Mail className="w-4 h-4" />info@simona-reinigungsservice.de</p>
                 <p className="flex items-center gap-2"><MapPin className="w-4 h-4" />Sigmaringen und Umgebung</p>
               </div>
             </div>
