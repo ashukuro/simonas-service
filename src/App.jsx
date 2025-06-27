@@ -25,7 +25,8 @@ import {
   HardHat,
   CheckCircle,
   ArrowUp,
-  Clock
+  Clock,
+  Loader2
 } from 'lucide-react';
 import logo from './assets/simonas_reinigungsservice_logo.png';
 import './App.css';
@@ -48,9 +49,12 @@ const AnimatedSection = ({ children, id }) => {
   const Home = () => {
   const form = useRef();
   const [formStatus, setFormStatus] = useState(null); // 'success', 'error', or null
+  const [isSending, setIsSending] = useState(false);
 
   const sendEmail = (e) => {
     e.preventDefault();
+    setIsSending(true);
+    setFormStatus(null);
 
     emailjs.sendForm('service_rosfkhc', 'template_v5znds6', form.current, '-ggIPIrLQuz_B_h57')
       .then((result) => {
@@ -60,6 +64,9 @@ const AnimatedSection = ({ children, id }) => {
       }, (error) => {
           console.log(error.text);
           setFormStatus('error');
+      })
+      .finally(() => {
+        setIsSending(false);
       });
   };
 
@@ -281,7 +288,16 @@ const AnimatedSection = ({ children, id }) => {
                     <Input placeholder="E-Mail-Adresse" type="email" name="user_email" required className="border-gray-300 focus:border-primary focus:ring-primary" />
                     <Input placeholder="Telefon" type="tel" name="user_phone" className="border-gray-300 focus:border-primary focus:ring-primary" />
                     <Textarea placeholder="Nachricht" rows={5} name="message" required className="border-gray-300 focus:border-primary focus:ring-primary" />
-                    <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-lg py-3">Anfrage senden</Button>
+                    <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-lg py-3" disabled={isSending}>
+                      {isSending ? (
+                        <>
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                          Senden...
+                        </>
+                      ) : (
+                        'Anfrage senden'
+                      )}
+                    </Button>
                   </form>
                   {formStatus === 'success' && <p className="text-green-500 text-center mt-4">Ihre Nachricht wurde erfolgreich gesendet!</p>}
                   {formStatus === 'error' && <p className="text-red-500 text-center mt-4">Fehler beim Senden Ihrer Nachricht. Bitte versuchen Sie es später erneut.</p>}
