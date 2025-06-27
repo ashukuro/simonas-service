@@ -27,15 +27,14 @@ const Imprint = () => {
 
             <div className="space-y-2">
               <h2 className="text-2xl font-semibold text-foreground">Umsatzsteuer-ID</h2>
-              <p>Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:</p>
-              <p>DE123456789</p>
+              <p>Kleinunternehmer gemäß § 19 UStG, keine Umsatzsteuer.</p>
             </div>
 
             <div className="space-y-2">
               <h2 className="text-2xl font-semibold text-foreground">Haftungsausschluss (Disclaimer)</h2>
               <h3 className="text-xl font-semibold text-foreground mt-4">Haftung für Inhalte</h3>
               <p>Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
-              
+
               <h3 className="text-xl font-semibold text-foreground mt-4">Haftung für Links</h3>
               <p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
             </div>
