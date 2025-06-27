@@ -8,10 +8,10 @@ const Privacy = () => {
       <Helmet>
         <title>Datenschutzerklärung - Simona's Reinigungsservice</title>
         <meta name="description" content="Datenschutzerklärung von Simona's Reinigungsservice. Erfahren Sie, wie wir Ihre Daten schützen und verwenden." />
-        <link rel="canonical" href="https://www.simonas-reinigungsservice.de/datenschutz" />
+        <link rel="canonical" href="https://simona-reinigungsservice.de/datenschutz" />
         <meta property="og:title" content="Datenschutzerklärung - Simona's Reinigungsservice" />
         <meta property="og:description" content="Datenschutzerklärung von Simona's Reinigungsservice. Erfahren Sie, wie wir Ihre Daten schützen und verwenden." />
-        <meta property="og:url" content="https://www.simonas-reinigungsservice.de/datenschutz" />
+        <meta property="og:url" content="https://simona-reinigungsservice.de/datenschutz" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Simona's Reinigungsservice" />
       </Helmet>

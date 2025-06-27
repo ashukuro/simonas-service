@@ -8,10 +8,10 @@ const Imprint = () => {
       <Helmet>
         <title>Impressum - Simona's Reinigungsservice</title>
         <meta name="description" content="Impressum von Simona's Reinigungsservice. Hier finden Sie alle rechtlichen Informationen zu unserem Unternehmen." />
-        <link rel="canonical" href="https://www.simonas-reinigungsservice.de/impressum" />
+        <link rel="canonical" href="https://simona-reinigungsservice.de/impressum" />
         <meta property="og:title" content="Impressum - Simona's Reinigungsservice" />
         <meta property="og:description" content="Impressum von Simona's Reinigungsservice. Hier finden Sie alle rechtlichen Informationen zu unserem Unternehmen." />
-        <meta property="og:url" content="https://www.simonas-reinigungsservice.de/impressum" />
+        <meta property="og:url" content="https://simona-reinigungsservice.de/impressum" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Simona's Reinigungsservice" />
       </Helmet>

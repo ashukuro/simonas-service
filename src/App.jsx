@@ -96,21 +96,21 @@ const AnimatedSection = ({ children, id }) => {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Simona's Reinigungsservice",
-    "image": "https://www.simonas-reinigungsservice.de/src/assets/simonas_reinigungsservice_logo.png",
-    "url": "https://www.simonas-reinigungsservice.de",
+    "image": "https://www.simona-reinigungsservice.de/assets/simonas_reinigungsservice_logo.png",
+    "url": "https://www.simona-reinigungsservice.de",
     "telephone": "+4917629181838",
     "priceRange": "$",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "",
+      "streetAddress": "Hohe Warte 28",
       "addressLocality": "Sigmaringen",
-      "postalCode": "",
+      "postalCode": "72488",
       "addressCountry": "DE"
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": 48.0886,
-      "longitude": 9.2175
+      "latitude": 49.9749172,
+      "longitude": 11.5822864
     },
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
@@ -124,7 +124,50 @@ const AnimatedSection = ({ children, id }) => {
       ],
       "opens": "06:00",
       "closes": "19:00"
-    }
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "reviewCount": "3"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Maria Schmidt"
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "reviewBody": "Simona und ihr Team haben unsere Wohnung nach der Renovierung perfekt gereinigt. Sehr professionell und zuverlässig!"
+      },
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Thomas Weber"
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "reviewBody": "Regelmäßige Büroreinigung auf höchstem Niveau. Unsere Mitarbeiter fühlen sich in den sauberen Räumen sehr wohl."
+      },
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Anna Müller"
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "reviewBody": "Die Fensterreinigung war fantastisch. Alle Scheiben sind streifenfrei und kristallklar. Sehr empfehlenswert!"
+      }
+    ]
   };
 
   return (
@@ -132,12 +175,12 @@ const AnimatedSection = ({ children, id }) => {
       <Helmet>
         <title>Simona's Reinigungsservice - Professionelle Gebäudereinigung in Sigmaringen</title>
         <meta name="description" content="Simona's Reinigungsservice bietet professionelle Reinigungsdienstleistungen in Sigmaringen und Umgebung. Kontaktieren Sie uns für ein kostenloses Angebot." />
-        <link rel="canonical" href="https://www.simonas-reinigungsservice.de" />
+        <link rel="canonical" href="https://simona-reinigungsservice.de" />
         <meta property="og:title" content="Simona's Reinigungsservice - Professionelle Gebäudereinigung in Sigmaringen" />
         <meta property="og:description" content="Simona's Reinigungsservice bietet professionelle Reinigungsdienstleistungen in Sigmaringen und Umgebung. Kontaktieren Sie uns für ein kostenloses Angebot." />
-        <meta property="og:url" content="https://www.simonas-reinigungsservice.de" />
+        <meta property="og:url" content="https://simona-reinigungsservice.de" />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.simonas-reinigungsservice.de/src/assets/simonas_reinigungsservice_logo.png" />
+        <meta property="og:image" content="https://simona-reinigungsservice.de/src/assets/simonas_reinigungsservice_logo.png" />
         <meta property="og:site_name" content="Simona's Reinigungsservice" />
         <script type="application/ld+json">
           {JSON.stringify(structuredData)}
