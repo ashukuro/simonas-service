@@ -15,10 +15,10 @@ const Privacy = () => {
             <div className="space-y-2">
               <h2 className="text-2xl font-semibold text-foreground">Verantwortliche Stelle</h2>
               <p>Verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
-              <p>Simona's Reinigungsservice</p>
-              <p>Musterstraße 123</p>
-              <p>12345 Musterstadt</p>
-              <p>E-Mail: simonareinigung@gmail.com</p>
+              <p>Simona Reinigungsservice</p>
+              <p>Inhaberin: Simona Poitasu</p>
+              <p>Hohe Warte 28</p>
+              <p>72488 Sigmaringen</p>
             </div>
 
             <div className="space-y-2">

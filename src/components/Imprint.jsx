@@ -12,10 +12,10 @@ const Imprint = () => {
           <CardContent className="text-muted-foreground space-y-6">
             <div className="space-y-2">
               <h2 className="text-2xl font-semibold text-foreground">Angaben gemäß § 5 TMG</h2>
-              <p>Simona's Reinigungsservice</p>
-              <p>Inhaberin: Simona [Nachname]</p>
-              <p>Musterstraße 123</p>
-              <p>12345 Musterstadt</p>
+              <p>Simona Reinigungsservice</p>
+              <p>Inhaberin: Simona Poitasu</p>
+              <p>Hohe Warte 28</p>
+              <p>72488 Sigmaringen</p>
             </div>
 
             <div className="space-y-2">
