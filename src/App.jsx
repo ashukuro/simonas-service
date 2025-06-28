@@ -413,8 +413,11 @@ const Layout = ({ children }) => {
           });
         }
       }, 100);
+    } else {
+      // Scroll to top on route change if no hash
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-  }, [location]);
+  }, [location.pathname, location.hash]);
 
 
   useEffect(() => {
